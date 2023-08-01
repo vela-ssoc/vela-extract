@@ -2,7 +2,6 @@ package extract
 
 import (
 	"encoding/json"
-	"github.com/bytedance/sonic"
 	"github.com/itchyny/gojq"
 	auxlib2 "github.com/vela-ssoc/vela-kit/auxlib"
 	"io"
@@ -34,7 +33,7 @@ func (jq *JsonQuery) call(chunk string, box *Box) {
 	}
 	var obj interface{}
 
-	err := sonic.Unmarshal(auxlib2.S2B(chunk), &obj)
+	err := json.Unmarshal(auxlib2.S2B(chunk), &obj)
 	if err != nil {
 		return
 	}

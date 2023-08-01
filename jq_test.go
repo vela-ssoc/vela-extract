@@ -1,7 +1,7 @@
 package extract
 
 import (
-	"github.com/bytedance/sonic"
+	"encoding/json"
 	"github.com/itchyny/gojq"
 	"testing"
 )
@@ -20,7 +20,7 @@ func TestJq(t *testing.T) {
 	}
 
 	var obj interface{}
-	sonic.Unmarshal([]byte(`{"a":{"b":24}}`), &obj)
+	json.Unmarshal([]byte(`{"a":{"b":24}}`), &obj)
 	iter := cv.Run(obj)
 	for {
 		item, ok := iter.Next()
